@@ -43,3 +43,5 @@ FreeRtos::delay_ms(100);
 
 - `led.toggle().unwrap();`: This line toggles the state of the LED or the GPIO pin represented by the `led` variable, The `toggle()` method changes the state of the GPIO pin to the opposite of its current state. The `unwrap()` function is used to handle any potential errors that might occur during the toggle operation. If the operation is successful, `unwrap()` will simply return the value, and if an error occurs, it will panic and cause the program to terminate.
 - `delay.delay_ms(100);`: introduce a delay of 100 milliseconds using the FreeRTOS operating system on the ESP32 microcontroller.
+
+![](https://github.com/ogabrielinacio/Esp32-Rust/blob/main/with_std/Images/blink_led.gif)
