@@ -59,3 +59,6 @@ delay.delay_ms(500u32);
 
 1. `led.toggle().unwrap();`: This line toggles the state of the LED or the GPIO pin represented by the `led` variable,  The `toggle()` method changes the state of the GPIO pin to the opposite of its current state. The `unwrap()` function is used to handle any potential errors that might occur during the toggle operation. If the operation is successful, `unwrap()` will simply return the value, and if an error occurs, it will panic and cause the program to terminate.
 2. `delay.delay_ms(500u32);`: This line introduces a delay of 500 milliseconds using the `delay_ms()` method of the `delay` object. The `delay_ms()` method suspends the program execution for the specified number of milliseconds (in this case, 500 milliseconds). The `500u32` argument represents an unsigned 32-bit integer literal specifying the duration of the delay.
+
+   
+![](https://github.com/ogabrielinacio/Esp32-Rust/blob/main/no_std/Images/blink_led.gif)
