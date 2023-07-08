@@ -6,15 +6,13 @@ This repository has as its main objective the study of Rust on an Esp32.
 
 ## Introdution:
 
-##### For more information consult `[Introduction - The Rust on ESP Book](https://esp-rs.github.io/book/introduction.html)`
+##### For more information consult: `https://esprs.github.io/book/introduction.html`
 
 There are two approaches to use Rust on ESP32
 
 - Using the `std`  library a.k.a Standard library.
 
 - Using the `core` library (`no_std`) a.k.a Bare metal development.
-  
-  
 
 ###### You should make a decision base on your project's needs.
 
@@ -33,7 +31,7 @@ There are two approaches to use Rust on ESP32
    rich set of functionality that can be used to build applications 
   quickly and efficiently, without worrying, too much, about low-level 
   details.
-2.  When you might want to use bare metal (`no_std`):
+2. When you might want to use bare metal (`no_std`):
    
    - Small memory footprint: If your embedded system has limited 
      resources and needs to have a small memory footprint, you will likely 
@@ -57,7 +55,7 @@ There are two approaches to use Rust on ESP32
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 ```
 
-2.  Install espup, a required tool to develop Rust application for the `Xtensa` and `RISC-V` architectures
+2. Install espup, a required tool to develop Rust application for the `Xtensa` and `RISC-V` architectures
 
 ```bash
 cargo install espup
@@ -69,15 +67,70 @@ cargo install espup
 espup install
 ```
 
+`espup` will create an export file that contains some environment variables required to build projects.
+
     3. Set up the environment variables:
 
+       There are 3 ways of set up the environment variables. I used this:
 
+```bash
+cat export-esp.sh >> ~/.bashrc
+```
 
+For more information, consult:
 
+ `https://esp-rs.github.io/book/installation/index.html#3-set-up-the-environment-variables`
 
+4. You also need the `std development requirements` :
+- [`python`](https://www.python.org/downloads/): Required by ESP-IDF
+- [`git`](https://git-scm.com/downloads): Required by ESP-IDF
+- [`ldproxy`](https://github.com/esp-rs/embuild/tree/master/ldproxy) binary crate: A tool that forwards linker arguments to the actual linker that is also given as an argument to `ldproxy`. Install it by running:
 
+```sh
+cargo install ldproxy
+```
 
+You dont need to install the ESP-IDF (Espressif IoT Development Framework), is automatically downloaded and installed by [esp-idf-sys](https://github.com/esp-rs/esp-idf-sys).
 
+5.    Generating Projects from Templates
+
+There are to tools to create projects in Rust on ESP32
+
+- [esp-template](https://github.com/esp-rs/esp-template) - `no_std` template.
+- [esp-idf-template](https://github.com/esp-rs/esp-idf-template) - `std` template.
+
+First, you need to instal the [cargo-generate](https://github.com/cargo-generate/cargo-generate), a tool that allows you to create a new project based on some existing template.
+
+    Install `cargo-generate`:
+
+```bash
+cargo install cargo-generate
+```
+
+Generate a project based in one of the templates:
+
+esp-template (no_std):
+
+- ```shell
+  cargo generate -a esp-rs/esp-template
+  ```
+
+- esp-idf-template (with std):
+
+```shell
+cargo generate esp-rs/esp-idf-template cargo
+```
+
+Once you execute the `cargo generate` subcommand, a series of
+ questions will be presented to gather information about your 
+application's target. After successfully providing the required answers,
+ you will obtain a project that can be built, complete with the 
+appropriate configuration.
+
+- Build/Run the generated project:
+  
+  - Using `cargo build` will compile the project using the appropriate toolchain and target.
+  - Using `cargo run` will compile the project, flash it, and open a serial monitor with our chip.
 
 ## References
 
