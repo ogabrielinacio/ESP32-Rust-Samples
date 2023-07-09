@@ -19,6 +19,6 @@ fn main() {
 
     loop {
          led.toggle().unwrap();
-         FreeRtos::delay_ms(100);
+         FreeRtos::delay_ms(500);
     }
 }

@@ -130,7 +130,7 @@ appropriate configuration.
 - Build/Run the generated project:
   
   - Using `cargo build` will compile the project using the appropriate toolchain and target.
-  - Using `cargo run` will compile the project, flash it, and open a serial monitor with our chip.
+  - Using `cargo run` will compile the project, flash it, and open a serial monitor with our chip. You need to press  `BOOT` button to flash esp32,  just for about 3 seconds after running the command `cargo run`.
 
 ## References
 
