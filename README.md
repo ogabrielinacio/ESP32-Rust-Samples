@@ -94,7 +94,7 @@ You dont need to install the ESP-IDF (Espressif IoT Development Framework), is a
 
 5.    Generating Projects from Templates
 
-There are to tools to create projects in Rust on ESP32
+There are two tools to create projects in Rust on ESP32
 
 - [esp-template](https://github.com/esp-rs/esp-template) - `no_std` template.
 - [esp-idf-template](https://github.com/esp-rs/esp-idf-template) - `std` template.
