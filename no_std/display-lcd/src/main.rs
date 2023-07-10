@@ -4,7 +4,13 @@
 use esp_backtrace as _;
 use esp_println::println;
 use hal::i2c::I2C;
-use hal::{clock::ClockControl, peripherals::Peripherals, prelude::*, timer::TimerGroup, Rtc, Delay};
+use hal::{
+    clock::ClockControl, peripherals::Peripherals, prelude::*, timer::TimerGroup, Delay, Rtc, IO,
+};
+use hd44780_driver::{Cursor, CursorBlink, Display, DisplayMode, HD44780};
+
+// I2C Adress was found in: 0x3F
+const I2C_ADDRESS: u8 = 0x3F;
 
 #[entry]
 fn main() -> ! {
@@ -29,7 +35,32 @@ fn main() -> ! {
     rtc.rwdt.disable();
     wdt0.disable();
     wdt1.disable();
-    println!("Hello world!");
+    ///////STARTING APPLICATION
+    let io = IO::new(peripherals.GPIO, peripherals.IO_MUX);
+    let scl = io.pins.gpio21.into_open_drain_output();
+    let sda = io.pins.gpio22.into_open_drain_output();
+    let i2c_speed = _fugit_RateExtU32::kHz(400);
+    let mut delay = Delay::new(&clocks);
+    let  i2c = I2C::new(
+        peripherals.I2C0,
+        scl,
+        sda,
+        i2c_speed,
+        &mut system.peripheral_clock_control,
+        &clocks,
+    );
+    let mut lcd = HD44780::new_i2c(i2c, I2C_ADDRESS, &mut delay).expect("Init LCD failed");
+    let _ = lcd.reset(&mut delay);
+    let _ = lcd.clear(&mut delay);
+    let _ = lcd.set_display_mode(
+        DisplayMode {
+            display: Display::On,
+            cursor_visibility: Cursor::Visible,
+            cursor_blink: CursorBlink::On,
+        },
+        &mut delay,
+    );
+    let _ = lcd.write_str("RUST IS AMAZING!", &mut delay);
 
     loop {}
 }

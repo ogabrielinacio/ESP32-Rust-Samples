@@ -111,7 +111,7 @@ dependencies = [
  "esp-backtrace",
  "esp-println",
  "esp32-hal",
- "liquidcrystal_i2c-rs",
+ "hd44780-driver",
 ]
 
 [[package]]
@@ -258,6 +258,15 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "2c6201b9ff9fd90a5a3bac2e56a830d0caa509576f0e503818ee82c181b3437a"
 
 [[package]]
+name = "hd44780-driver"
+version = "0.4.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "aab2b13fdeaed7dde9133a57c28b2cbde4a8fc8c3196b5631428aad114857d3a"
+dependencies = [
+ "embedded-hal",
+]
+
+[[package]]
 name = "heck"
 version = "0.4.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -277,15 +286,6 @@ checksum = "d5477fe2230a79769d8dc68e0eabf5437907c0457a5614a9e8dddb67f65eb65d"
 dependencies = [
  "equivalent",
  "hashbrown",
-]
-
-[[package]]
-name = "liquidcrystal_i2c-rs"
-version = "0.1.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "531e09bf909d83142fd22189be3a239e8eea5a2a810c05f0a09f791c1b42b631"
-dependencies = [
- "embedded-hal",
 ]
 
 [[package]]

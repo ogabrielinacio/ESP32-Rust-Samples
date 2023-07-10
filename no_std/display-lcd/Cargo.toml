@@ -9,3 +9,4 @@ license = "MIT OR Apache-2.0"
 hal = { package = "esp32-hal", version = "0.13.0" }
 esp-backtrace = { version = "0.7.0", features = ["esp32", "panic-handler", "exception-handler", "print-uart"] }
 esp-println       = { version = "0.5.0", features = ["esp32"] }
+hd44780-driver = "0.4.0"
