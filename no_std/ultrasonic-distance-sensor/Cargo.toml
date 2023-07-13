@@ -1,7 +1,7 @@
 [package]
 name = "ultrasonic_distance_sensor"
 version = "0.1.0"
-authors = ["gabrielpinacio"]
+authors = ["ogabrielinacio"]
 edition = "2021"
 license = "MIT OR Apache-2.0"
 

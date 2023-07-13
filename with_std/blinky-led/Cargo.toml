@@ -1,7 +1,7 @@
 [package]
 name = "blinky-led"
 version = "0.1.0"
-authors = ["gabrielpinacio <random.dev@disroot.org>"]
+authors = ["ogabriepinacio"]
 edition = "2021"
 resolver = "2"
 rust-version = "1.66"
