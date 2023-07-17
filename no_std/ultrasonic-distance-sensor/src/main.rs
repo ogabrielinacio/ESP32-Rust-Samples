@@ -49,13 +49,13 @@ fn main() -> ! {
         while !echo.is_high().unwrap() {}
 
         // Collect current timer count
-        let echo_start = rtc.get_time_ms();
+        let echo_start = rtc.get_time_us();
 
         // Wait until pin goes low
         while !echo.is_low().unwrap() {}
 
         // Collect current timer count
-        let echo_end =  rtc.get_time_ms();
+        let echo_end =  rtc.get_time_us();
         // Calculate the elapsed timer count
         let echo_dur = echo_end.wrapping_sub(echo_start);
         let echo_dur_float = echo_dur as f32;
@@ -66,7 +66,8 @@ fn main() -> ! {
         let distance_cm = (echo_dur_float * 0.034) / 2.0;
 
         // Print the distance output
-         println!("\n\nDistance {} cm\r", distance_cm);
+        println!("\n\nDistance {} cm\r", distance_cm);
+        delay.delay_ms(1000u32);
     }
 
 }
