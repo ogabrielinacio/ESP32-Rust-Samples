@@ -37,8 +37,8 @@ fn main() -> ! {
     wdt1.disable();
     println!("Hello world!");
     let io = IO::new(peripherals.GPIO, peripherals.IO_MUX);
-    let scl = io.pins.gpio21.into_open_drain_output();
-    let sda = io.pins.gpio22.into_open_drain_output();
+    let sda = io.pins.gpio21.into_open_drain_output();
+    let scl = io.pins.gpio22.into_open_drain_output();
     let i2c_speed = _fugit_RateExtU32::kHz(400);
 
     let mut i2c = I2C::new(

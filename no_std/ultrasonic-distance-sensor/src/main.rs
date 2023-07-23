@@ -35,12 +35,11 @@ fn main() -> ! {
     let mut delay = Delay::new(&clocks);
 
     loop {
-         // 1) Set pin ouput to low for 5 us to get clean low pulse 5microsegos
+         // 1) Set pin ouput to low for 5 us to get clean low pulse 5microseconds
         trig.set_low().unwrap();
-        // delay.delay_us(5_u32);
         delay.delay_us(2_u32);
 
-        // 2) Set pin output to high (trigger) for 10us 10micro
+        // 2) Set pin output to high (trigger) for 10us 10microseconds
         trig.set_high().unwrap();
         delay.delay_us(10_u32);
         trig.set_low().unwrap();
@@ -59,10 +58,7 @@ fn main() -> ! {
         // Calculate the elapsed timer count
         let echo_dur = echo_end.wrapping_sub(echo_start);
         let echo_dur_float = echo_dur as f32;
-        // Calculate the distance in cms using formula in datasheet
-        // #define SOUND_SPEED 0.034
-        // let distance_cm = (echo_dur_float * 0.034) / 2.0;
-        // let distance_cm = ((echo_dur_float * 340.0)/2.0) * 0.0001;
+
         let distance_cm = (echo_dur_float * 0.034) / 2.0;
 
         // Print the distance output
