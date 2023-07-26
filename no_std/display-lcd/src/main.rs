@@ -2,7 +2,6 @@
 #![no_main]
 
 use esp_backtrace as _;
-use esp_println::println;
 use hal::i2c::I2C;
 use hal::{
     clock::ClockControl, peripherals::Peripherals, prelude::*, timer::TimerGroup, Delay, Rtc, IO,
@@ -43,8 +42,8 @@ fn main() -> ! {
     let mut delay = Delay::new(&clocks);
     let  i2c = I2C::new(
         peripherals.I2C0,
-        scl,
         sda,
+        scl,
         i2c_speed,
         &mut system.peripheral_clock_control,
         &clocks,

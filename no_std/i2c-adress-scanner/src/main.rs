@@ -43,8 +43,8 @@ fn main() -> ! {
 
     let mut i2c = I2C::new(
         peripherals.I2C0,
-        scl,
         sda,
+        scl,
         i2c_speed,
         &mut system.peripheral_clock_control,
         &clocks,
