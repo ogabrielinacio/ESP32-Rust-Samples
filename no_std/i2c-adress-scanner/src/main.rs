@@ -3,11 +3,11 @@
 
 use esp_backtrace as _;
 use esp_println::println;
-use hal::i2c::I2C;
 use hal::{
     clock::ClockControl,
     peripherals::Peripherals,
-    prelude::{_fugit_RateExtU32, *},
+    prelude::*,
+    i2c::I2C,
     timer::TimerGroup,
     Rtc, IO,
 };
