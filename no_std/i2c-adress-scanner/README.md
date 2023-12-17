@@ -63,4 +63,33 @@ Define the buffer size:
 let mut buffer: [u8; 32] = [0; 32]; // max 32 esp32
 ```
 
+Define a mutable variable `i2c_address` of type u8, and initializes it to 0.
 
+```rust
+let mut i2c_address: u8 = 0;
+```
+
+Iterate through all possible I2C addresses ( 0 to 127) and attempst to read data from the device at the current address (addr) and stores the result in the result variable, if a device is found at a particular address, the code prints a message and updates the `i2c_address` variable with the address of the found device.
+
+```rust
+for addr in 0..=127 {
+        let result = i2c.read(addr, &mut buffer);
+        match result {
+            Ok(_) => {
+                println!("Found device at address: 0x{:02X}", addr);
+                i2c_address = addr;
+            }
+            Err(_) => println!("Error encountered while scanning address: 0x{:02X}", addr),
+        }
+    }
+```
+
+If no I2C device was found (address is 0), print 'Not found'; otherwise, print the found address.
+
+```rust
+if i2c_address == 0 {
+        println!("\n\nWas not found\n\n");
+    } else {
+        println!("\n\nI2C Adress was found in: 0x{:02X}\n\n", i2c_address);
+    }
+```
