@@ -1,7 +1,5 @@
 # I2C-adress-scanner
 
-
-
 In the default creation of `main.rs`, we need to include three more packages in hal library, the `IO` , `prelude` and i2c.
 
 So the hal part, looks like this now:
